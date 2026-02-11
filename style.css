@@ -1,0 +1,206 @@
+/* --- Global Styles --- */
+:root {
+    --cyan: #00f2ff;
+    --blue-dark: #0066ff;
+    --pink: #ff00de;
+    --purple-dark: #7000ff;
+    --bg-overlay: rgba(15, 5, 25, 0.4); 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    
+    /* BACKGROUND IMAGE SETTINGS */
+    background-color: #1a0b2e; 
+    background-image: 
+        linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
+        url('1.webp');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* --- THE GLASS BOX (Transparent Center Panel) --- */
+.mission-control {
+    text-align: center;
+    border: 2px solid rgba(0, 242, 255, 0.4);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    
+    /* Frosted Glass Effect */
+    backdrop-filter: blur(15px) saturate(160%); 
+    -webkit-backdrop-filter: blur(15px) saturate(160%);
+    
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    width: 550px; 
+    position: relative;
+    border-radius: 20px;
+}
+
+h1 {
+    color: var(--pink);
+    text-shadow: 0 0 15px var(--pink);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+/* --- 🆕 ADVICE / MISSION INTEL UI (Added) --- */
+.advice-section {
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.4); /* අකුරු පැහැදිලිව පේන්න පසුබිම තද කළා */
+    position: relative;
+    overflow: hidden;
+    max-width: 90%;
+}
+
+/* Cyber Grid Effect Background */
+.advice-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+    background-size: 15px 15px;
+    pointer-events: none;
+}
+
+.hq-label {
+    font-size: 0.7rem;
+    color: #ffcc00; 
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+#agent-advice {
+    font-size: 0.95rem;
+    color: var(--cyan);
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
+    line-height: 1.4;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- PUZZLE CONTAINER & SHAKE EFFECT --- */
+.circuit-board {
+    margin: 15px auto;
+    border: 2px solid var(--cyan);
+    padding: 10px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+    max-width: 90%; 
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+#puzzle-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.2) brightness(1.0);
+}
+
+/* --- ROUNDED GRADIENT BUTTONS --- */
+button {
+    background: linear-gradient(to right, #7000ff 0%, #ff00de 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 8px 4px;
+    transition: 0.3s ease;
+    border-radius: 15px !important; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    clip-path: none !important; 
+}
+
+button:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(255, 0, 222, 0.6);
+    transform: scale(1.05) translateY(-2px);
+}
+
+button[onclick*="logout"] {
+    background: linear-gradient(to right, #8b0000, #ff0000);
+}
+
+/* --- RESULT OVERLAY UI --- */
+#blast-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 12px;
+}
+
+/* --- Keypad & Inputs --- */
+input {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--cyan);
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    width: 80%;
+    outline: none;
+    border-radius: 10px;
+}
+
+.keypad button {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px !important;
+    font-size: 18px;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+/* --- ANIMATIONS --- */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.shake {
+    animation: shakeAnim 0.4s ease-in-out;
+}
+
+@keyframes shakeAnim {
+    0%, 100% { transform: translateX(0); border-color: var(--cyan); }
+    20%, 60% { transform: translateX(-10px); border-color: #ff0000; }
+    40%, 80% { transform: translateX(10px); border-color: #ff0000; }
+}
